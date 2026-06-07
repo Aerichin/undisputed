@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Undisputed - Built For Champions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0e0e0e; 
+            color: #fff; 
+            overflow-x: hidden;
+            overflow-y: scroll; 
+        }
+
+        .navbar {
+            position: relative; 
+            background-color: #0b0a08; 
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 5%;
+            z-index: 10;
+            border-bottom: 1px solid #222;
+            overflow: hidden; 
+        }
+
+        .navbar::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.daznservices.com/di/library/DAZN_News/60/63/naoya-inoue-celebration-getty-ftr_1mfvvkpdvhatg1m230gm6k0kye.jpg?t=1093973425') center center/cover no-repeat;
+            opacity: 0.25; 
+            z-index: -1; 
+        }
+
+        .logo, .nav-links, .nav-icons {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-wrapper img {
+            height: 100px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin: 0 18px;
+            letter-spacing: 1.5px;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            border-bottom: 2px solid #fff;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center; 
+        }
+
+        .nav-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+            position: relative; 
+        }
+
+        .nav-icons img {
+            height: 22px; 
+            width: auto;
+            object-fit: contain;
+            filter: invert(0); 
+        }
+
+        .nav-icons a:hover {
+            transform: scale(1.15);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -6px;
+            right: -8px;
+            background-color: #f5b95c;
+            color: #000;
+            font-size: 0.7rem;
+            font-weight: 900;
+            min-width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px;
+            border: 1.5px solid #0b0a08;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: scale(0);
+            pointer-events: none;
+        }
+
+        .cart-badge.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .about-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 5% 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .about-header {
+            font-size: 5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .about-subtitle {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #f5b95c;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .about-image-side {
+            position: relative;
+            width: 100%;
+            height: 480px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .about-image-side::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://photo.boxingscene.com/uploads/naoya-inoue_1703610442.webp') center center/cover no-repeat;
+            filter: grayscale(30%) brightness(85%);
+        }
+
+        .about-text-side {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+
+        .about-story-title {
+            font-size: 2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .about-story-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #f5b95c;
+        }
+
+        .about-paragraph {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 20px;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        .brand-statement {
+            border-left: 3px solid #f5b95c;
+            background: rgba(245, 185, 92, 0.04);
+            padding: 20px;
+            margin: 30px 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.6;
+            letter-spacing: 0.5px;
+        }
+  
+        .about-cta-container {
+            margin-top: 15px;
+        }
+
+        .explore-btn {
+            display: inline-block;
+            background-color: #f5b95c;
+            color: #000;
+            text-decoration: none;
+            padding: 16px 40px;
+            font-size: 0.9rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .explore-btn:hover {
+            background-color: #e0aa53;
+        }
+
+        .explore-btn:active {
+            transform: scale(0.98);
+        }
+      
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 25;
+        }
+
+        .menu-toggle span {
+            width: 100%;
+            height: 2px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 1200px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr); 
+                column-gap: 20px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .banner-title {
+                font-size: 3.5rem;
+            }
+            .navbar {
+                padding: 20px 5%;
+            }
+            .nav-links a {
+                margin: 0 10px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex; 
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: #090909;
+                border-right: 1px solid #222;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                padding: 40px;
+                gap: 30px;
+                z-index: 20;
+                transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            .nav-links.open {
+                left: 0;
+            }
+
+            .nav-links a {
+                margin: 0;
+                font-size: 1.1rem;
+                letter-spacing: 2px;
+                width: 100%;
+                padding-bottom: 8px;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+            }
+
+            .menu-toggle.open span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .menu-toggle.open span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.open span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .search-container.active .search-input-field {
+                width: 130px; 
+            }
+
+            .banner-title {
+                font-size: 2.3rem;
+                letter-spacing: 2px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr); 
+                column-gap: 15px;
+                row-gap: 35px;
+            }
+
+            .product-image-wrapper {
+                height: auto;
+                padding: 15px;
+            }
+
+            .product-price {
+                font-size: 1.2rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+          <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="logo">
+            <a href="index.html" class="logo-wrapper">
+                <img src="assets/undisputed_logo.png" alt="Undisputed Logo">
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="all products.html">ALL PRODUCTS</a>
+            <a href="gloves.html">GLOVES</a>
+            <a href="protection.html">PROTECTION</a>
+            <a href="footwear.html">FOOTWEAR</a>
+        </nav>
+        
+        <div class="nav-icons">
+            <a href="account.html" aria-label="Profile">
+                <img src="assets/account-icon.png" alt="Account">
+            </a>
+            <a href="cart.html" aria-label="Cart">
+                <div style="position: relative; display: inline-flex;">
+                    <img src="assets/cart-icon.png" alt="Cart">
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <main class="about-wrapper">
+        <h1 class="about-header">ABOUT US</h1>
+        <div class="about-subtitle">UNDISPUTED</div>
+        
+        <div class="about-grid">
+            <div class="about-image-side"></div>
+            
+            <div class="about-text-side">
+    <h2 class="about-story-title">OUR MISSION</h2>
+    
+    <p class="about-paragraph">
+        To source, curate, and distribute world-class boxing gear and elite protective equipment directly to combat athletes who refuse to compromise on their training. We bridge the gap between premium global brands and the fighters who rely on them to conquer the grind.
+    </p>
+
+    <div class="brand-statement">
+        "We bring the gear. You forge the legacy."
+    </div>
+
+    <h2 class="about-story-title" style="margin-top: 20px;">OUR VISION</h2>
+
+    <p class="about-paragraph">
+        To be the ultimate premier hub and most trusted distributor of combat sports equipment worldwide—empowering everyday athletes and elite champions alike to step inside the lines with absolute confidence, backed by gear tested at the highest levels of professional fighting.
+    </p>
+
+    <div class="about-cta-container">
+        <a href="all products.html" class="explore-btn">EXPLORE COLLECTIONS</a>
+    </div>
+</div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.querySelector('.nav-links'); 
+
+            menuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                menuToggle.classList.toggle('open');
+                navLinks.classList.toggle('open');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                    menuToggle.classList.remove('open');
+                    navLinks.classList.remove('open');
+                }
+            });
+
+            updateCartBadgeCount();
+
+            function updateCartBadgeCount() {
+                const cartBadge = document.getElementById('cartBadge');
+                if (!cartBadge) return;
+
+                const cart = JSON.parse(localStorage.getItem('undisputedCart')) || [];
+                const totalItems = cart.reduce((total, item) => total + (item.quantity || 0), 0);
+
+                if (totalItems > 0) {
+                    cartBadge.textContent = totalItems;
+                    cartBadge.classList.add('active');
+                } else {
+                    cartBadge.classList.remove('active');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

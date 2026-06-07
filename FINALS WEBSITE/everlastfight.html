@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undisputed - RFX-Guerrero Pro Fight Gloves - SF-F</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000; 
+            color: #fff;
+            overflow-x: hidden;
+            overflow-y: scroll; 
+        }
+
+      
+        .navbar {
+            position: relative; 
+            background-color: #0b0a08;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 5%;
+            z-index: 10;
+            border-bottom: 1px solid #222;
+            overflow: hidden; 
+        }
+
+   
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(11, 10, 8, 0.75)),
+                        url('https://wallpapercat.com/w/full/a/d/2/1950275-3000x1688-desktop-hd-oleksandr-usyk-wallpaper-image.jpg') center center/cover no-repeat;
+            opacity: 0.25; 
+            z-index: 1;
+        }
+
+        .logo, .nav-links, .nav-icons {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-wrapper {
+            display: inline-block;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin: 0 18px;
+            letter-spacing: 1.5px;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            border-bottom: 2px solid #fff;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center; 
+        }
+
+        .nav-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .nav-icons img {
+            height: 22px; 
+            width: auto;
+            object-fit: contain;
+            filter: invert(0); 
+        }
+
+        .nav-icons a:hover {
+            transform: scale(1.15);
+        }
+
+         .cart-icon-wrapper {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -7px;
+            right: -9px;
+            background-color: #f5b95c; 
+            color: #000;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 900;
+            min-width: 17px;
+            height: 17px;
+            padding: 0 4px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 0 0 2px #000; 
+            pointer-events: none; 
+        }
+
+        .product-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 5%;
+            display: flex;
+            gap: 5%;
+            align-items: flex-start;
+            background-color: #000;
+        }
+
+        .product-image-container {
+            flex: 1.2;
+            background-color: #ececec; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            min-height: 550px;
+            border-radius: 12px;
+        }
+
+        .product-image-container img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        .product-info-panel {
+            flex: 1;
+            color: #fff;
+            padding-top: 10px;
+        }
+
+        .product-title {
+            font-size: 2.3rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .product-price {
+            font-size: 3.2rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            margin-bottom: 30px;
+        }
+
+        .option-label {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: #a0a0a0;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .options-group {
+            margin-bottom: 30px;
+        }
+
+        .color-selector-wrapper {
+            display: flex;
+            gap: 15px;
+        }
+
+        .color-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+            outline: none;
+        }
+
+        .color-btn:hover {
+            transform: scale(1.08);
+        }
+
+        .color-btn.active {
+            border-color: #fff;
+            box-shadow: 0 0 0 2px #000 inset;
+        }
+
+        .color-btn.red { background-color: #ff0000; }
+        .color-btn.white { background-color: #ffffff; }
+
+        .size-selector-wrapper {
+            display: flex;
+            gap: 12px;
+        }
+
+        .size-btn {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #555;
+            padding: 10px 25px;
+            border-radius: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+        }
+
+        .size-btn:hover {
+            border-color: #fff;
+        }
+
+        .size-btn.active {
+            background-color: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+
+        .quantity-wrapper {
+            display: inline-flex;
+            align-items: center;
+            background-color: #fff;
+            color: #000;
+            border-radius: 20px;
+            padding: 4px 12px;
+        }
+
+        .qty-btn {
+            background: none;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 4px 12px;
+            color: #000;
+            outline: none;
+        }
+
+        .qty-number {
+            font-size: 1rem;
+            font-weight: 700;
+            min-width: 30px;
+            text-align: center;
+            user-select: none;
+        }
+
+        .add-to-cart-btn {
+            display: block;
+            width: 100%;
+            max-width: 320px;
+            background-color: #f5b95c; 
+            color: #000;
+            border: none;
+            padding: 16px 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 40px;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #e0aa53;
+        }
+
+        .add-to-cart-btn:active {
+            transform: scale(0.98);
+        }
+
+        .custom-toast {
+            position: fixed;
+            top: 30px;
+            right: -400px;
+            width: 340px;
+            background-color: #111;
+            border-left: 4px solid #f5b95c; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 9999;
+            border-radius: 4px;
+            transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .custom-toast.show {
+            right: 30px;
+        }
+
+        .toast-icon-wrapper {
+            background-color: rgba(245, 185, 92, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .toast-icon-wrapper svg {
+            width: 20px;
+            height: 20px;
+            fill: #f5b95c;
+        }
+
+        .toast-content {
+            flex: 1;
+        }
+
+        .toast-message {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+
+        .toast-sub-link {
+            font-size: 0.75rem;
+            color: #a0a0a0;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        
+        .toast-sub-link:hover {
+            color: #f5b95c;
+        }
+
+         .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 25;
+        }
+
+        .menu-toggle span {
+            width: 100%;
+            height: 2px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 1200px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr); 
+                column-gap: 20px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .banner-title {
+                font-size: 3.5rem;
+            }
+            .navbar {
+                padding: 20px 5%;
+            }
+            .nav-links a {
+                margin: 0 10px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex; 
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: #090909;
+                border-right: 1px solid #222;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                padding: 40px;
+                gap: 30px;
+                z-index: 20;
+                transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            .nav-links.open {
+                left: 0;
+            }
+
+            .nav-links a {
+                margin: 0;
+                font-size: 1.1rem;
+                letter-spacing: 2px;
+                width: 100%;
+                padding-bottom: 8px;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+            }
+
+            .menu-toggle.open span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .menu-toggle.open span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.open span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .search-container.active .search-input-field {
+                width: 130px; 
+            }
+
+            .banner-title {
+                font-size: 2.3rem;
+                letter-spacing: 2px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr); 
+                column-gap: 15px;
+                row-gap: 35px;
+            }
+
+            .product-image-wrapper {
+                height: auto;
+                padding: 15px;
+            }
+
+            .product-price {
+                font-size: 1.2rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="custom-toast" id="cartToast">
+        <div class="toast-icon-wrapper">
+            <svg viewBox="0 0 24 24">
+                <path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/>
+            </svg>
+        </div>
+        <div class="toast-content">
+            <div class="toast-message">Item added to your cart!</div>
+            <div class="toast-sub-link" onclick="window.location.href='cart.html'">View Shopping Cart →</div>
+        </div>
+    </div>
+
+    <header class="navbar">
+
+         <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="logo">
+            <a href="undisputed.html" class="logo-wrapper">
+                <img src="assets/undisputed_logo.png" alt="Undisputed Logo" style="height: 100px; width: auto;">
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="all products.html">ALL PRODUCTS</a>
+            <a href="gloves.html">GLOVES</a>
+            <a href="protection.html">PROTECTION</a>
+            <a href="footwear.html">FOOTWEAR</a>
+        </nav>
+        <div class="nav-icons">
+            <a href="all products.html" aria-label="Search">
+                <img src="assets/search-icon.png" alt="Search">
+            </a>
+            <a href="account.html" aria-label="Profile">
+                <img src="assets/account-icon.png" alt="Account">
+            </a>
+            <a href="cart.html" aria-label="Cart">
+                <div class="cart-icon-wrapper">
+                    <img src="assets/cart-icon.png" alt="Cart">
+                    <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <main class="product-container">
+        <div class="product-image-container">
+            <img id="mainProductImg" src="assets/MX OG Fight Gloves.png" alt="MX OG Fight Gloves">
+        </div>
+
+        <div class="product-info-panel">
+            <h1 class="product-title" id="prodTitle">MX OG Fight Gloves</h1>
+            <div class="product-price" id="prodPrice" data-numeric="21599">₱21,599.00</div>
+
+            <div class="options-group">
+                <div class="option-label">Select Color:</div>
+                <div class="color-selector-wrapper">
+                    <button class="color-btn red active" data-image="assets/MX OG Fight Gloves.png" aria-label="Red"></button>
+                    <button class="color-btn white" data-image="assets/everlastfight-white.png" aria-label="white"></button>
+                </div>
+            </div>
+
+            <div class="options-group">
+                <div class="option-label">Size:</div>
+                <div class="size-selector-wrapper">
+                    <button class="size-btn active">8oz</button>
+                    <button class="size-btn">10oz</button>
+                </div>
+            </div>
+
+            <div class="options-group">
+                <div class="option-label">Quantity:</div>
+                <div class="quantity-wrapper">
+                    <button class="qty-btn" id="minusBtn" type="button">—</button>
+                    <span class="qty-number" id="qtyDisplay">1</span>
+                    <button class="qty-btn" id="plusBtn" type="button">+</button>
+                </div>
+            </div>
+
+            <button class="add-to-cart-btn" id="addToCartBtn" type="button">Add to Cart</button>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.querySelector('.nav-links'); 
+
+            menuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                menuToggle.classList.toggle('open');
+                navLinks.classList.toggle('open');
+            });
+
+            // --- 1. DOM Elements Mapping ---
+            const mainProductImg = document.getElementById('mainProductImg');
+            const colorButtons = document.querySelectorAll('.color-btn');
+            const sizeButtons = document.querySelectorAll('.size-btn');
+            const minusBtn = document.getElementById('minusBtn');
+            const plusBtn = document.getElementById('plusBtn');
+            const qtyDisplay = document.getElementById('qtyDisplay');
+            const addToCartBtn = document.getElementById('addToCartBtn');
+            const cartToast = document.getElementById('cartToast');
+            const cartBadge = document.getElementById('cartBadge');
+            
+            let currentQuantity = 1;
+            let toastTimeout; 
+       
+            updateCartBadgeCount();
+
+            colorButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    colorButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    const targetImageSrc = button.getAttribute('data-image');
+                    mainProductImg.style.opacity = 0;
+                    setTimeout(() => {
+                        mainProductImg.src = targetImageSrc;
+                        mainProductImg.style.opacity = 1;
+                    }, 150);
+                });
+            });
+
+            sizeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    sizeButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                });
+            });
+
+            plusBtn.addEventListener('click', () => {
+                currentQuantity++;
+                qtyDisplay.textContent = currentQuantity;
+            });
+
+            minusBtn.addEventListener('click', () => {
+                if (currentQuantity > 1) {
+                    currentQuantity--;
+                    qtyDisplay.textContent = currentQuantity;
+                }
+            });
+
+            addToCartBtn.addEventListener('click', () => {
+                const title = document.getElementById('prodTitle').textContent;
+                const price = parseInt(document.getElementById('prodPrice').getAttribute('data-numeric'));
+                const image = mainProductImg.src;
+                const size = document.querySelector('.size-btn.active').textContent;
+                const color = document.querySelector('.color-btn.active').getAttribute('aria-label');
+
+                let cart = JSON.parse(localStorage.getItem('undisputedCart')) || [];
+                const existingItemIndex = cart.findIndex(item => item.title === title && item.size === size && item.color === color);
+
+                if (existingItemIndex > -1) {
+                    cart[existingItemIndex].quantity += currentQuantity;
+                } else {
+                    cart.push({
+                        title: title,
+                        price: price,
+                        image: image,
+                        size: size,
+                        color: color,
+                        quantity: currentQuantity
+                    });
+                }
+
+                localStorage.setItem('undisputedCart', JSON.stringify(cart));
+
+                updateCartBadgeCount();
+
+                clearTimeout(toastTimeout);
+                cartToast.classList.add('show');
+                
+                toastTimeout = setTimeout(() => {
+                    cartToast.classList.remove('show');
+                }, 1500);
+            });
+
+            function updateCartBadgeCount() {
+                if (!cartBadge) return;
+
+                const cart = JSON.parse(localStorage.getItem('undisputedCart')) || [];
+                const totalItems = cart.reduce((total, item) => total + (item.quantity || 0), 0);
+
+                if (totalItems > 0) {
+                    cartBadge.textContent = totalItems;
+                    cartBadge.style.display = 'flex';
+                } else {
+                    cartBadge.style.display = 'none';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
